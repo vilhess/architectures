@@ -1,0 +1,7 @@
+googLeNet/data
+googLeNet/out
+*.tar 
+*.data
+*data
+unet/saved_images
+*.ipynb_checkpoints
