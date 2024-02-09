@@ -71,6 +71,8 @@ class UNET(nn.Module):
 def test():
     x = torch.randn((3, 1, 160, 160))
     model = UNET(in_channels=1, out_channels=1)
+    pytorch_total_params = sum(p.numel() for p in model.parameters())
+    print(pytorch_total_params)
     preds = model(x)
     print(x.shape, preds.shape)
     assert preds.shape == x.shape
