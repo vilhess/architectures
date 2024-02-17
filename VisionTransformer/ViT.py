@@ -56,6 +56,7 @@ class ViT(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.ln = nn.LayerNorm(embed_size, eps=1e-6)
         self.head = nn.Linear(embed_size, num_classes)
+        self.softmax = nn.Softmax(dim=1)
 
         self.apply(self._init_weights)
 
@@ -83,7 +84,8 @@ class ViT(nn.Module):
             x = layer(x)
         x = self.ln(x)
         x = x[:,0]
-        return self.head(x)
+        x = self.head(x)
+        return self.softmax(x)
     
 if __name__=='__main__':
     
